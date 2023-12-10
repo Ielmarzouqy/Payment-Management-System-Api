@@ -57,9 +57,8 @@ getPayments = async (req, res) => {
       const result = await this.paymentRepo.displayPayments();
       console.log(result)
 
-        return res.status(500).json({
-          error: 'Internal Server Error',
-          message: 'Invalid result format',
+        return res.status(200).json({
+          message: ' get all Payments ',
           result:result
         });
    
