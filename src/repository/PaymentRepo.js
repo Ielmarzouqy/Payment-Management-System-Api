@@ -12,7 +12,7 @@ class PaymentRepo extends BaseRepo {
 
     console.log('repo  ', data);
     try {
-      return await this.model.insertMany(data);
+      return await this.model.create(data);
     } catch (error) {
       throw new Error(error);
     }
@@ -27,6 +27,7 @@ class PaymentRepo extends BaseRepo {
       throw new Error(error);
     }
   };
+
 }
 
 module.exports = PaymentRepo;

@@ -70,6 +70,47 @@ getPayments = async (req, res) => {
         .json({ error: 'Internal Server Error', message: error.message });
     }
   };
-}
+
+  makePayment = async (req, res) => {
+      const paymentCreate = req.body;
+      console.log(paymentCreate)
+    try {
+      const payment = await this.paymentRepo.create(paymentCreate);
+      console.log(payment)
+
+        return res.status(200).json({
+          message: ' make Payment successfuly',
+          result:payment
+        });
+   
+    //   res.status(200).json(result);
+    } catch (error) {
+      console.error(error);
+      res
+        .status(500)
+        .json({ error: 'Internal Server Error', message: error.message });
+    }
+  };
+
+  
+  deletePayment = async (req, res)=>{
+    
+    const _id = req.params
+          console.log(_id)
+      try{
+
+        const paymentDeleted = await this.paymentRepo.forceDelete(_id);
+
+        return res.status(200).json({
+          message: ' delete Payment successfuly',
+        });
+      }catch (error){
+        console.error(error);
+        res
+          .status(500)
+          .json({ error: 'Internal Server Error', message: error.message });
+      }
+      }
+    }
 
 module.exports = PaymentController;
