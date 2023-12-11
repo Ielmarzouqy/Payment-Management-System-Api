@@ -16,6 +16,25 @@ class ApartmentController {
     console.log(apartmentC)
     res.status(200).json({ message:"all apartment" ,apartment:apartmentC});
   };
+
+  updateApartment = async (req, res) => {
+    const _id = req.params;
+    const apartment = req.body;
+    console.log(_id, apartment)
+
+    const  apartmentUp = await this.apartmentRepo.update(_id, apartment);
+    console.log(apartmentUp)
+    res.status(200).json({ message:"all apartment" ,apartment:apartmentUp});
+  };
+
+  deleteApartment = async (req, res) => {
+    const _id = req.params;
+    console.log(_id)
+
+    const  apartmentDeleted = await this.apartmentRepo.forceDelete(_id);
+    console.log(apartmentDeleted)
+    res.status(200).json({ message:"Delete apartment successfuly" });
+  };
 }
 
 module.exports = ApartmentController;

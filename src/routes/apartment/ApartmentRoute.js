@@ -6,7 +6,9 @@ const apartmentController = new ApartmentController();
 apartmentRoute.post("/addapartment", apartmentController.createApartment);
 apartmentRoute.get("/allapartment", apartmentController.getAllApartments);
 
-// apartmentRoute.put("/payment/:_id", paymentController.updatePayment);
+apartmentRoute.put("/updateapart/:_id", apartmentController.updateApartment);
+apartmentRoute.delete("/deleteaprt/:_id", apartmentController.deleteApartment);
+
 
 
 module.exports = apartmentRoute;

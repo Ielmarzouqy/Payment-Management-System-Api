@@ -70,6 +70,27 @@ getAllClients = async (req, res) => {
         .json({ error: 'Internal Server Error', message: error.message });
     }
   };
+
+  createClient = async (req, res) => {
+      const clientcreated = req.body
+    try {
+      const result = await this.clientRepo.create(clientcreated);
+      console.log(result)
+
+        return res.status(200).json({
+          message: 'get all client successfuly',
+          result:result
+        });
+   
+    //   res.status(200).json(result);
+    } catch (error) {
+      console.error(error);
+      res
+        .status(500)
+        .json({ error: 'Internal Server Error', message: error.message });
+    }
+  };
+
 }
 
 module.exports = ClientController;
