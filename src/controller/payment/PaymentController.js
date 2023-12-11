@@ -92,7 +92,28 @@ getPayments = async (req, res) => {
     }
   };
 
-  
+  updatePayment = async (req, res)=>{
+    const _id = req.params;
+    const paymentUpdated = req.body;
+
+    try{
+
+      const payment = await this.paymentRepo.update(_id, paymentUpdated)
+console.log(payment)
+      return res.status(200).json({
+        message:"payment updated successfuly",
+        data:payment
+      })
+    }catch(error){
+      console.error(error);
+      res
+        .status(500)
+        .json({ error: 'Internal Server Error', message: error.message });
+
+    }
+
+  }
+
   deletePayment = async (req, res)=>{
     
     const _id = req.params
