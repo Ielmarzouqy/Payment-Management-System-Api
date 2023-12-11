@@ -14,7 +14,7 @@ class ApartmentRepo extends BaseRepo {
 
     console.log('repo  ', data);
     try {
-      return await this.model.insertMany(data);
+      return await this.model.create(data);
     } catch (error) {
       throw new Error(error);
     }
