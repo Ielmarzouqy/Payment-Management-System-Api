@@ -6,7 +6,7 @@ const clientController = new ClientController();
 clientRoute.post("/addclient", clientController.createClient);
 clientRoute.get("/allclients", clientController.getAllClients);
 
-// clientRoute.put("/payment/:_id", paymentController.updatePayment);
+clientRoute.put("/updateclt/:_id", clientController.updateClient);
 
 
 module.exports = clientRoute;

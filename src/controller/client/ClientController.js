@@ -91,6 +91,29 @@ getAllClients = async (req, res) => {
     }
   };
 
+  updateClient = async (req, res) => {
+    const _id = req.params
+    const clientupdate = req.body
+
+    console.log(_id, clientupdate)
+  try {
+    const client = await this.clientRepo.update(_id,clientupdate);
+    console.log(client)
+
+      return res.status(200).json({
+        message: 'updated client successfuly',
+        result:client
+      });
+ 
+  //   res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: 'Internal Server Error', message: error.message });
+  }
+};
+
 }
 
 module.exports = ClientController;
