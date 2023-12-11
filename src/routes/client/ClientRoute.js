@@ -7,6 +7,8 @@ clientRoute.post("/addclient", clientController.createClient);
 clientRoute.get("/allclients", clientController.getAllClients);
 
 clientRoute.put("/updateclt/:_id", clientController.updateClient);
+clientRoute.delete("/deleteclt/:_id", clientController.deleteClient);
+
 
 
 module.exports = clientRoute;

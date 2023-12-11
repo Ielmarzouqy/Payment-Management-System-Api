@@ -114,6 +114,29 @@ getAllClients = async (req, res) => {
   }
 };
 
+
+deleteClient = async (req, res) => {
+  const _id = req.params
+
+  console.log(_id)
+try {
+  const client = await this.clientRepo.forceDelete(_id);
+  console.log(client)
+
+    return res.status(200).json({
+      message: 'delete client successfuly',
+      
+    });
+
+//   res.status(200).json(result);
+} catch (error) {
+  console.error(error);
+  res
+    .status(500)
+    .json({ error: 'Internal Server Error', message: error.message });
+}
+};
+
 }
 
 module.exports = ClientController;
