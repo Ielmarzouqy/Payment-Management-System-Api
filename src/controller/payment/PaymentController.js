@@ -71,6 +71,27 @@ getPayments = async (req, res) => {
     }
   };
 
+  getPayment = async (req, res) => {
+
+    const _id = req.params
+    try {
+      const result = await this.paymentRepo.findOne(_id);
+      console.log(result)
+
+        return res.status(200).json({
+          message: ' get all Payments ',
+          result:result
+        });
+   
+    //   res.status(200).json(result);
+    } catch (error) {
+      console.error(error);
+      res
+        .status(500)
+        .json({ error: 'Internal Server Error', message: error.message });
+    }
+  };
+
   makePayment = async (req, res) => {
       const paymentCreate = req.body;
       console.log(paymentCreate)

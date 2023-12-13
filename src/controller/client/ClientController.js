@@ -137,6 +137,28 @@ try {
 }
 };
 
+getClient = async (req, res) => {
+
+  const _id = req.params
+  try {
+    const result = await this.clientRepo.getOneClient(_id);
+    console.log(result)
+
+      return res.status(200).json({
+        message: ' get all Payments ',
+        result:result
+      });
+ 
+  //   res.status(200).json(result);
+  } catch (error) {
+    console.error(error);
+    res
+      .status(500)
+      .json({ error: 'Internal Server Error', message: error.message });
+  }
+};
+
+
 }
 
 module.exports = ClientController;

@@ -9,4 +9,6 @@ paymentRoute.get("/allpayments", paymentController.getPayments);
 paymentRoute.delete("/deletepay/:_id", paymentController.deletePayment);
 
 paymentRoute.put("/updatepay/:_id", paymentController.updatePayment);
+paymentRoute.get("/payment/:_id", paymentController.getPayment);
+
 module.exports = paymentRoute;

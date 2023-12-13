@@ -17,6 +17,11 @@ const clientSchema = Schema({
     ref: "Apartment",
     type : Schema.Types.ObjectId,
   },
+  payment: {
+    ref: "Payment",
+    type : [Schema.Types.ObjectId],
+    default:null,
+  },
   startDate: {
     type: Date,
     default:null
