@@ -28,6 +28,19 @@ class PaymentRepo extends BaseRepo {
     }
   };
 
+  getReceipt =  async (conditions) => {
+    try {
+      const receipt = await this.model.findById(conditions).populate("apartment").populate("client").lean();
+
+
+      console.log("payment", receipt)
+
+      return {client,receipt}
+    } catch (error) {
+      throw new Error(error);
+    }
+  }; 
+
 }
 
 module.exports = PaymentRepo;

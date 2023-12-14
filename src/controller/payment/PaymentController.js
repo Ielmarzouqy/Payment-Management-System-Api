@@ -153,6 +153,28 @@ console.log(payment)
           .json({ error: 'Internal Server Error', message: error.message });
       }
       }
+
+      getReceiptMonth = async (req, res) => {
+
+        const _id = req.params
+
+        try {
+          const result = await this.paymentRepo.getReceipt(_id,month);
+          console.log(result)
+
+            return res.status(200).json({
+              message: ' get all Payments ',
+              result
+            });
+      
+        //   res.status(200).json(result);
+        } catch (error) {
+          console.error(error);
+          res
+            .status(500)
+            .json({ error: 'Internal Server Error', message: error.message });
+        }
+      };
     }
 
 module.exports = PaymentController;

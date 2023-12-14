@@ -69,9 +69,9 @@ class ClientRepo extends BaseRepo {
 
   getOneClient =  async (conditions) => {
     try {
-      const client = await this.model.findById(conditions);
+      const client = await this.model.findById(conditions).populate("apartment").lean();
 
-      const payment = await Payment.find({client: client._id});
+      const payment = await Payment.find({client: client._id}).populate("client").populate("apartment").lean();
 
       console.log("payment", payment)
 
@@ -81,6 +81,19 @@ class ClientRepo extends BaseRepo {
     }
   }; 
   
+  // getReceiptClient =  async (conditions) => {
+  //   try {
+  //     // const month = await this.model.findOne({ _id: id });
+
+  //     const payment = await Payment.findById(conditions).populate("client").populate("apartment").lean();
+
+  //     console.log("payment", payment)
+
+  //     return {month,payment}
+  //   } catch (error) {
+  //     throw new Error(error);
+  //   }
+  // }; 
   
 
 

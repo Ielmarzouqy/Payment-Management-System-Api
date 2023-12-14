@@ -8,6 +8,10 @@ paymentRoute.get("/allpayments", paymentController.getPayments);
 
 paymentRoute.delete("/deletepay/:_id", paymentController.deletePayment);
 
+paymentRoute.get("/receipt/:_id", paymentController.getReceiptMonth);
+
+
+
 paymentRoute.put("/updatepay/:_id", paymentController.updatePayment);
 paymentRoute.get("/payment/:_id", paymentController.getPayment);
 

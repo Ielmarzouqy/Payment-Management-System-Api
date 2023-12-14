@@ -11,7 +11,7 @@ class BaseRepo  {
   
   findOne = async (conditions) => {
     try {
-      return await this.model.findOne(conditions);
+      return await this.model.findOne(conditions).populate("client").populate("apartment").lean();
     } catch (error) {
       throw new Error(error);
     }

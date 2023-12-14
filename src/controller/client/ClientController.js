@@ -146,7 +146,7 @@ getClient = async (req, res) => {
 
       return res.status(200).json({
         message: ' get all Payments ',
-        result:result
+        result
       });
  
   //   res.status(200).json(result);
@@ -157,6 +157,29 @@ getClient = async (req, res) => {
       .json({ error: 'Internal Server Error', message: error.message });
   }
 };
+
+// getReceipt = async (req, res) => {
+
+//   const month = req.params
+//   const _id = req.params
+
+//   try {
+//     const result = await this.clientRepo.getReceiptClient(_id,month);
+//     console.log(result)
+
+//       return res.status(200).json({
+//         message: ' get all Payments ',
+//         result
+//       });
+ 
+//   //   res.status(200).json(result);
+//   } catch (error) {
+//     console.error(error);
+//     res
+//       .status(500)
+//       .json({ error: 'Internal Server Error', message: error.message });
+//   }
+// };
 
 
 }
