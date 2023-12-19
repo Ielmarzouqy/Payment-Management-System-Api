@@ -120,7 +120,7 @@ getPayments = async (req, res) => {
     try{
 
       const payment = await this.paymentRepo.update(_id, paymentUpdated)
-console.log(payment)
+console.log( "payment edit", payment)
       return res.status(200).json({
         message:"payment updated successfuly",
         data:payment

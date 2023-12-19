@@ -10,6 +10,14 @@ class ApartmentController {
     res.status(200).json({ message:"all apartment" ,apartments:apartments});
   };
 
+  getApartment = async (req, res) => {
+
+    const _id = req.params
+    const  apartment = await this.apartmentRepo.findById(_id);
+    console.log(apartment)
+    res.status(200).json({ message:"GET apartment" ,apartment:apartment});
+  };
+
   createApartment = async (req, res) => {
     const apartment = req.body
       const    apartmentC = await this.apartmentRepo.create(apartment);

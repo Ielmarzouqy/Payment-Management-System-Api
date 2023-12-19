@@ -76,6 +76,7 @@ class ClientRepo extends BaseRepo {
       console.log("payment", payment)
 
       return {client,payment}
+      // return {client}
     } catch (error) {
       throw new Error(error);
     }
