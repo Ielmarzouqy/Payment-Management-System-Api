@@ -23,5 +23,14 @@ class UserRepository extends BaseRepo {
       throw new Error(error);
     }
   };
+  
+  findByEmail = async (conditions) => {
+    console.log(conditions)
+    try {
+      return await this.model.findOne(conditions);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
 }
 module.exports = UserRepository;
