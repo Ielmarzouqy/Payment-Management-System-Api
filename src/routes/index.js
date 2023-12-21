@@ -4,6 +4,7 @@ const express = require("express");
 const apartmentRoute = require("./apartment/ApartmentRoute");
 const paymentRoute = require("./payment/PaymentRout");
 const clientRoute = require("./client/ClientRoute");
+const userRoute = require("./user/UserRoute");
 
 const router = express.Router();
 
@@ -14,6 +15,8 @@ router.use(express.urlencoded({ extended: true }));
 router.use("/payment", paymentRoute);
 router.use("/client", clientRoute);
 router.use("/apartment",apartmentRoute);
+router.use("/user",userRoute);
+
 
 
 router.use((err, req, res, next) => {

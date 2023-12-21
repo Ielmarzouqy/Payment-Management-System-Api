@@ -1,5 +1,7 @@
 const Client = require("../mongodb/schema/Client");
 const Payment = require("../mongodb/schema/Payment");
+const Apartment = require("../mongodb/schema/Apartment");
+
 const mongoose = require('../mongodb/mongoose'); // Add this line to import mongoose
 // mongoose.set("strictQuery", true);
 
@@ -12,11 +14,17 @@ class ClientRepo extends BaseRepo {
   }
   
   create = async (data) => {
-    // const { foods, user } = data;
-
+    const { apartment } = data;
+    const aprtUpdate = {isAvailable:false}
     console.log('repo  ', data);
+    console.log('repo statuuuuus  ', apartment);
+
     try {
-      return await this.model.insertMany(data);
+
+      const client =  await this.model.create(data);
+      const status = await Apartment.findByIdAndUpdate(apartment, aprtUpdate);
+
+      return client, status;
     } catch (error) {
       throw new Error(error);
     }
@@ -67,6 +75,9 @@ class ClientRepo extends BaseRepo {
     }
   };
 
+
+
+
   getOneClient =  async (conditions) => {
     try {
       const client = await this.model.findById(conditions).populate("apartment").lean();
@@ -81,23 +92,6 @@ class ClientRepo extends BaseRepo {
       throw new Error(error);
     }
   }; 
-  
-  // getReceiptClient =  async (conditions) => {
-  //   try {
-  //     // const month = await this.model.findOne({ _id: id });
-
-  //     const payment = await Payment.findById(conditions).populate("client").populate("apartment").lean();
-
-  //     console.log("payment", payment)
-
-  //     return {month,payment}
-  //   } catch (error) {
-  //     throw new Error(error);
-  //   }
-  // }; 
-  
-
-
 }
 
 module.exports = ClientRepo;

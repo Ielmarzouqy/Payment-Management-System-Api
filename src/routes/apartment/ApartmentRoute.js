@@ -5,6 +5,8 @@ const apartmentController = new ApartmentController();
 
 apartmentRoute.post("/addapartment", apartmentController.createApartment);
 apartmentRoute.get("/allapartment", apartmentController.getAllApartments);
+apartmentRoute.get("/available", apartmentController.getAvailableApartments);
+
 apartmentRoute.get("/apartment/:_id", apartmentController.getApartment);
 
 

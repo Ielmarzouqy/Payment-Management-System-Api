@@ -20,6 +20,14 @@ class ApartmentRepo extends BaseRepo {
     }
   };
 
+  findAvailableApartment = async ()=>{
+    try {
+      return await Apartment.find({ isAvailable: true });
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  
+  }
 
 
 }

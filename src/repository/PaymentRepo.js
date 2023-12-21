@@ -23,6 +23,7 @@ class PaymentRepo extends BaseRepo {
     try {
       return await this.model.find(query).populate("client").populate("apartment").lean();
       
+      console.log("query", query)
     } catch (error) {
       throw new Error(error);
     }

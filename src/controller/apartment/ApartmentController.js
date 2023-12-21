@@ -18,6 +18,22 @@ class ApartmentController {
     res.status(200).json({ message:"GET apartment" ,apartment:apartment});
   };
 
+  getAvailableApartments = async (req, res) => {
+try {
+ // const _id = req.params
+ const  apartment = await this.apartmentRepo.findAvailableApartment();
+ console.log(apartment)
+   res.status(200).json({ message:"GET apartment" ,apartment:apartment});
+
+}catch (error){
+  res.status(500).json({message: error.message})
+}
+    };
+
+
+
+
+
   createApartment = async (req, res) => {
     const apartment = req.body
       const    apartmentC = await this.apartmentRepo.create(apartment);

@@ -26,6 +26,7 @@ connect();
 const bodyParse = require('body-parser');
 const ClientRoute = require('./src/routes/client/ClientRoute');
 const paymentRoute = require('./src/routes/payment/PaymentRout');
+const userRoute = require('./src/routes/user/UserRoute');
 app.use(bodyParse.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -40,6 +41,8 @@ app.get('/', (req, res) => {
 app.use('/api/apartment', ApartmentRoute);
 app.use('/api/client', ClientRoute);
 app.use('/api/payment', paymentRoute);
+app.use('/api/user', userRoute);
+
 
 
 
